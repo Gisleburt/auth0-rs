@@ -1,5 +1,9 @@
 use async_trait::async_trait;
+pub use http::*;
+
 use crate::error::Result;
+
+mod http;
 
 #[async_trait]
 pub trait Auth0<P: Passwordless, D: DbConnection> {
