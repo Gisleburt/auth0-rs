@@ -1,5 +1,6 @@
 use async_trait::async_trait;
 
+use crate::api::signup::SignUp;
 use crate::api::{Auth0, DbConnection, Passwordless};
 use crate::error::Result;
 
@@ -53,7 +54,7 @@ pub struct HttpDbConnection;
 
 #[async_trait]
 impl DbConnection for HttpDbConnection {
-    async fn signup() -> Result<()> {
+    async fn signup(_signup: SignUp) -> Result<()> {
         Ok(())
     }
 

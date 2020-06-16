@@ -1,9 +1,11 @@
 use async_trait::async_trait;
-pub use http::*;
+pub use http_api::*;
 
+use crate::api::signup::SignUp;
 use crate::error::Result;
 
-mod http;
+mod http_api;
+mod signup;
 
 #[async_trait]
 pub trait Auth0<P: Passwordless, D: DbConnection> {
@@ -22,6 +24,6 @@ pub trait Passwordless {
 
 #[async_trait]
 pub trait DbConnection {
-    async fn signup() -> Result<()>;
+    async fn signup(signup: SignUp) -> Result<()>;
     async fn change_password() -> Result<()>;
 }
